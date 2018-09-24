@@ -24,11 +24,32 @@ export default class App extends React.Component {
     // .then(data => console.log(data));
     // let projects = new Projects;
     // console.log(projects.all());
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
+    // this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
+
+    // this.ref.get().then(snapshot => {
+    //   let projects = [];
+    //   snapshot.forEach((doc) => {
+    //     let data = doc.data();
+    //     projects.push({
+    //       key: doc.id, // Document ID
+    //       name: data.name,
+    //       desc: data.description
+    //     });
+    //   });
+    //   this.setState({
+    //     projects
+    //  });
+    // });
+
+    this.ref.get().then(snapshot => this.onCollectionUpdate(snapshot));
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    // this.unsubscribe();
+  }
+
+  updateData() {
+
   }
 
   onCollectionUpdate = (querySnapshot) => {
