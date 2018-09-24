@@ -6,7 +6,6 @@ function fetchData() {
 
   return new Promise((resolve, reject) => {
     let db = base.firestore();
-    // console.log(db);
     //Disable deprecated features
     db.settings({
       timestampsInSnapshots: true
