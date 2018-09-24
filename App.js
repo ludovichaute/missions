@@ -5,7 +5,8 @@ import fetchData from './test1';
 export default class App extends React.Component {
 
   componentDidMount() {
-    fetchData().then(data => console.log(data));
+    fetchData()
+    .then(data => console.log(data));
   }
 
   render() {
