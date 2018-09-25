@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Button } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Body, Text, Drawer } from 'native-base';
+import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
+import { Container, Header, Content, Button, Title, Text, Card, CardItem, Body, Drawer, Left, Icon, Right, Spinner } from 'native-base';
+import { Font } from 'expo';
 import Sidebar from './components/Sidebar';
 // import fetchData from './test1';
 // import Projects from './models/projects';
@@ -17,8 +18,17 @@ export default class App extends React.Component {
     this.ref = firestore.collection('projects');
     this.unsubscribe = null;
     this.state = {
-      projects: []
+      projects: [],
+      fontsLoaded: false
     }
+  }
+
+  async componentWillMount() {
+    await Expo.Font.loadAsync({
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+    });
+    this.setState({fontsLoaded:true});
   }
 
   componentDidMount() {
@@ -74,15 +84,29 @@ export default class App extends React.Component {
   }
 
   render() {
+    if(this.state.fontsLoaded) {
     return (
       <Drawer
         ref={(ref) => { this.drawer = ref; }}
         content={<Sidebar />}
         onClose={() => this.closeDrawer()} >
         <Container>
-          <Header />
+          <Header style={{paddingTop:30, paddingBottom:10}}>
+            <Left>
+              <Button transparent>
+                <Icon name='arrow-back' />
+              </Button>
+            </Left>
+            <Body>
+              <Title>Missions</Title>
+            </Body>
+            <Right>
+              <Button transparent onPress={() => this.openDrawer()}>
+                <Icon name='menu' />
+              </Button>
+            </Right>
+          </Header>
           <Content>
-          <Button onPress={() => this.openDrawer()} title="Open" color="blue" />
             <Card>
               <CardItem>
                 <Body>
@@ -104,6 +128,12 @@ export default class App extends React.Component {
           </Content>
         </Container>
       </Drawer>
+    );
+    }
+    return (
+        <View style={styles.container}>
+          <Spinner color="black" />
+        </View>
     );
   }
 }
