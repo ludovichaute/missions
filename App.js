@@ -2,8 +2,11 @@ import React from 'react';
 import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
 import { Container, Content, Button, Title, Text, Card, CardItem, Body, Drawer, Left, Icon, Right, Spinner } from 'native-base';
 import { Font } from 'expo';
+import { Router, Scene } from 'react-native-router-flux';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import Test from './components/Test';
+import Retest from './components/Retest';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -76,17 +79,13 @@ export default class App extends React.Component {
         onClose={() => this.closeDrawer()} >
         <Container>
           <Header openDrawer={() => this.openDrawer()} />
-          <Content>
-            <Text>{"Let's do this !"}</Text>
-            <FlatList
-              data={this.state.projects}
-              renderItem={({item}) => <View>
-                <Text>{item.key}</Text>
-                <Text style={{fontSize:30}}>{item.name}</Text>
-                <Text>{item.desc}</Text>
-              </View>}
-            />
-          </Content>
+ 
+          <Router>
+            <Scene hideNavBar key="root">
+              <Scene hideNavBar key="test" component={Test} title="pageTest" initial={true} />
+              <Scene hideNavBar key="retest" component={Retest} title="rePageTest" />
+            </Scene>
+          </Router>
         </Container>
       </Drawer>
     );
