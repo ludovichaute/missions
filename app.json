@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "missions2",
+    "name": "Missions",
     "description": "This project is really great.",
-    "slug": "slug",
+    "slug": "missions",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],

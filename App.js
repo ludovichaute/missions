@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, Button } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Body, Text, Drawer } from 'native-base';
-// import Drawer from './components/Drawer';
+import Sidebar from './components/Sidebar';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -77,7 +77,7 @@ export default class App extends React.Component {
     return (
       <Drawer
         ref={(ref) => { this.drawer = ref; }}
-        content={<Text>test</Text>}
+        content={<Sidebar />}
         onClose={() => this.closeDrawer()} >
         <Container>
           <Header />
