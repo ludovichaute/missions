@@ -4,6 +4,8 @@ import { Container, Header, Content, Button, Title, Text, Card, CardItem, Body, 
 import { Font } from 'expo';
 import Sidebar from './components/Sidebar';
 import FormTest from './components/FormTest';
+import ProjectItem from './components/ProjectItem';
+import ItemProject from './components/ItemProject';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -92,7 +94,7 @@ export default class App extends React.Component {
         content={<Sidebar />}
         onClose={() => this.closeDrawer()} >
         <Container>
-          <Header style={{paddingTop:30, paddingBottom:10}}>
+          <Header style={{paddingTop:30, paddingBottom:10, backgroundColor:'#4FBC84'}}>
             <Left>
               <Button transparent>
                 <Icon name='arrow-back' />
@@ -108,16 +110,13 @@ export default class App extends React.Component {
             </Right>
           </Header>
           <Content>
-            <Card>
-              <CardItem>
-                <Body>
-                  <Text>
-                     Your mother here
-                  </Text>
-                </Body>
-              </CardItem>
-            </Card>
-            <FormTest />
+          <ProjectItem />
+          <ItemProject />
+          <ProjectItem />
+          <ProjectItem />
+          <ProjectItem />
+          <ProjectItem />
+          <ProjectItem />
           </Content>
         </Container>
       </Drawer>
@@ -125,7 +124,7 @@ export default class App extends React.Component {
     }
     return (
         <View style={styles.container}>
-          <Spinner color="black" />
+          <Spinner color="#4FBC84" />
         </View>
     );
   }
