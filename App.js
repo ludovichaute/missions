@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Button } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Body, Text, Drawer } from 'native-base';
+// import Drawer from './components/Drawer';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -63,19 +65,45 @@ export default class App extends React.Component {
    });
   }
 
+  closeDrawer = () => {
+    this.drawer._root.close()
+  };
+
+  openDrawer = () => {
+    this.drawer._root.open()
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>{"Let's do this !"}</Text>
-        <FlatList
-          data={this.state.projects}
-          renderItem={({item}) => <View>
-            <Text>{item.key}</Text>
-            <Text style={{fontSize:30}}>{item.name}</Text>
-            <Text>{item.desc}</Text>
-          </View>}
-        />
-      </View>
+      <Drawer
+        ref={(ref) => { this.drawer = ref; }}
+        content={<Text>test</Text>}
+        onClose={() => this.closeDrawer()} >
+        <Container>
+          <Header />
+          <Content>
+          <Button onPress={() => this.openDrawer()} title="Open" color="blue" />
+            <Card>
+              <CardItem>
+                <Body>
+                  <Text>
+                     Your mother here
+                  </Text>
+                </Body>
+              </CardItem>
+            </Card>
+            <Text>{"Let's do this !"}</Text>
+            <FlatList
+              data={this.state.projects}
+              renderItem={({item}) => <View>
+                <Text>{item.key}</Text>
+                <Text style={{fontSize:30}}>{item.name}</Text>
+                <Text>{item.desc}</Text>
+              </View>}
+            />
+          </Content>
+        </Container>
+      </Drawer>
     );
   }
 }
