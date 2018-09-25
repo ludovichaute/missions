@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, FlatList, Button } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Body, Text, Drawer } from 'native-base';
 import Sidebar from './components/Sidebar';
+import FormTest from './components/FormTest';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -92,15 +93,7 @@ export default class App extends React.Component {
                 </Body>
               </CardItem>
             </Card>
-            <Text>{"Let's do this !"}</Text>
-            <FlatList
-              data={this.state.projects}
-              renderItem={({item}) => <View>
-                <Text>{item.key}</Text>
-                <Text style={{fontSize:30}}>{item.name}</Text>
-                <Text>{item.desc}</Text>
-              </View>}
-            />
+            <FormTest />
           </Content>
         </Container>
       </Drawer>
