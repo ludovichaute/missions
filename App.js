@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
-import { Container, Header, Content, Button, Title, Text, Card, CardItem, Body, Drawer, Left, Icon, Right, Spinner } from 'native-base';
+import { Container, Content, Button, Title, Text, Card, CardItem, Body, Drawer, Left, Icon, Right, Spinner } from 'native-base';
 import { Font } from 'expo';
 import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -19,7 +20,8 @@ export default class App extends React.Component {
     this.unsubscribe = null;
     this.state = {
       projects: [],
-      fontsLoaded: false
+      fontsLoaded: false,
+      dataLoaded:false
     }
   }
 
@@ -32,27 +34,8 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // fetchData()
-    // .then(data => console.log(data));
-    // let projects = new Projects;
-    // console.log(projects.all());
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
-
-    // this.ref.get().then(snapshot => {
-    //   let projects = [];
-    //   snapshot.forEach((doc) => {
-    //     let data = doc.data();
-    //     projects.push({
-    //       key: doc.id, // Document ID
-    //       name: data.name,
-    //       desc: data.description
-    //     });
-    //   });
-    //   this.setState({
-    //     projects
-    //  });
-    // });
-
+    // For one-time query use this line and comment the subscribe
     // this.ref.get().then(snapshot => this.onCollectionUpdate(snapshot));
   }
 
@@ -71,7 +54,8 @@ export default class App extends React.Component {
       });
     });
     this.setState({
-      projects
+      projects,
+      dataLoaded:true
    });
   }
 
@@ -84,38 +68,15 @@ export default class App extends React.Component {
   }
 
   render() {
-    if(this.state.fontsLoaded) {
+    if(this.state.fontsLoaded && this.state.dataLoaded) {
     return (
       <Drawer
         ref={(ref) => { this.drawer = ref; }}
         content={<Sidebar />}
         onClose={() => this.closeDrawer()} >
         <Container>
-          <Header style={{paddingTop:30, paddingBottom:10}}>
-            <Left>
-              <Button transparent>
-                <Icon name='arrow-back' />
-              </Button>
-            </Left>
-            <Body>
-              <Title>Missions</Title>
-            </Body>
-            <Right>
-              <Button transparent onPress={() => this.openDrawer()}>
-                <Icon name='menu' />
-              </Button>
-            </Right>
-          </Header>
+          <Header openDrawer={() => this.openDrawer()} />
           <Content>
-            <Card>
-              <CardItem>
-                <Body>
-                  <Text>
-                     Your mother here
-                  </Text>
-                </Body>
-              </CardItem>
-            </Card>
             <Text>{"Let's do this !"}</Text>
             <FlatList
               data={this.state.projects}
