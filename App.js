@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Test from './components/Test';
 import Retest from './components/Retest';
+import LoginForm from './components/LoginForm';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -79,11 +80,13 @@ export default class App extends React.Component {
         onClose={() => this.closeDrawer()} >
         <Container>
           <Header openDrawer={() => this.openDrawer()} />
- 
+
           <Router>
             <Scene hideNavBar key="root">
-              <Scene hideNavBar key="test" component={Test} title="pageTest" initial={true} />
-              <Scene hideNavBar key="retest" component={Retest} title="rePageTest" />
+              <Scene hideNavBar key="listeProjets" component={LoginForm} title="pageTest" initial={true} />
+              <Scene hideNavBar key="listeMissions" component={Retest} title="rePageTest" />
+              <Scene hideNavBar key="detailMission" component={Retest} title="rePageTest" />
+              <Scene hideNavBar key="profile" component={Retest} title="rePageTest" />
             </Scene>
           </Router>
         </Container>
