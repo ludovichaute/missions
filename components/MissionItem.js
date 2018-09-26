@@ -10,27 +10,27 @@ export default class MissionItem extends Component {
               <Left>
                 <Thumbnail source={{uri: 'http://diverseeducation.com/wp-content/uploads/2013/06/060713_Paul_Ong.jpg'}} style={{height:40,width:40}} />
                 <Body>
-                  <Text>Becode</Text>
-                  <Text note>April 15, 2016, Bruxelles</Text>
+                  <Text>{this.props.name}</Text>
+                  <Text note>{this.props.region}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem>
               <Body style={{flex:1,justifyContent:'center',alignItems:'center'}}>
 
-              <Text note>{"Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life… "}</Text>
+              <Text note>{this.props.description}</Text>
 
               </Body>
             </CardItem>
             <CardItem>
               <Left>
                   <Icon name="construct" style={{color: 'black'}} />
-                  <Text style={{color: 'black'}}>{"IT, Account"}</Text>
+                  <Text style={{color: 'black'}}>{this.props.skills}</Text>
               </Left>
 
               <Left>
                   <Icon name="calendar" style={{color: 'black'}} />
-                  <Text style={{color: 'black'}}>{"3 hours"}</Text>
+                  <Text style={{color: 'black'}}>{this.props.hours + " hours needed."}</Text>
               </Left>
             </CardItem>
             <CardItem>

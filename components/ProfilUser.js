@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import {Card, CardItem, Text,H1,Icon,Button,Picker,Item,Form} from 'native-base';
+import {Card, CardItem, Text,H1,Icon,Button,Picker,Item,Form,H2} from 'native-base';
 export default class ProfilUser extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    selected2: undefined
+    selected2: undefined,
   };
 }
 onValueChange2(value: string) {
   this.setState({
     selected2: value
   });
+
 }
   render() {
     return (
@@ -24,9 +25,15 @@ onValueChange2(value: string) {
             </CardItem>
             <CardItem>
               <Icon name="home" style={{color: '#4FBC84'}} />
-              <Text style={{color: 'grey'}}>{"Boulevar de Kashykk -1300 Naboo "}</Text>
+              <Text style={{color: 'grey'}}>{"Le Sénat, Boulevard de Kashykk"}</Text>
             </CardItem>
             <CardItem>
+              <Icon name="map" style={{color: '#4FBC84'}} />
+              <Text style={{color: 'grey'}}>{"Naboo"}</Text>
+            </CardItem>
+            <CardItem style={{flexDirection:'column'}}>
+            <H2 style={{color:'#4fbc84',fontSize:16}}>My skills</H2>
+            <Text>{this.state.selected2}</Text>
             <Item picker>
               <Picker
                 mode="dropdown"
@@ -38,14 +45,12 @@ onValueChange2(value: string) {
                 selectedValue={this.state.selected2}
                 onValueChange={this.onValueChange2.bind(this)}
               >
-                <Picker.Item label="Wallet" value="key0" />
-                <Picker.Item label="ATM Card" value="key1" />
-                <Picker.Item label="Debit Card" value="key2" />
-                <Picker.Item label="Credit Card" value="key3" />
-                <Picker.Item label="Net Banking" value="key4" />
+                <Picker.Item label="Lightsaber" value="Lightsaber" />
+                <Picker.Item label="Sith's power" value="Sith's power" />
+                <Picker.Item label="Manipulation" value="Manipulation" />
+                <Picker.Item label="Sith's mentoring" value="Sith's mentoring" />
               </Picker>
             </Item>
-
             </CardItem>
           </Card>
 

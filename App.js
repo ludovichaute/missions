@@ -8,6 +8,8 @@ import ProjectItem from './components/ProjectItem';
 import MissionItem from './components/MissionItem';
 import ProfilMissions from './components/ProfilMissions';
 import ProfilUser from './components/ProfilUser';
+import ListProject from './components/ListProject';
+import ListMissions from './components/ListMissions';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -112,15 +114,17 @@ export default class App extends React.Component {
             </Right>
           </Header>
           <Content>
-          <MissionItem />
-          <ProjectItem />
-          {/*<ProjectItem />
+          {/*<MissionItem />
           <ProjectItem />
           <ProjectItem />
           <ProjectItem />
-          <ProjectItem />*/}
+          <ProjectItem />
+          <ProjectItem />
+          <ProjectItem />
           <ProfilMissions />
-          <ProfilUser />
+          <ProfilUser />*/}
+          <ListProject />
+          <ListMissions />
           </Content>
         </Container>
       </Drawer>

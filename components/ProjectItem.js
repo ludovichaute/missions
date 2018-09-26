@@ -10,12 +10,12 @@ export default class ProjectItem extends Component {
               <Left>
                 <Thumbnail source={{uri: 'http://diverseeducation.com/wp-content/uploads/2013/06/060713_Paul_Ong.jpg'}} style={{height:40,width:40}} />
                 <Body style={{flex:1}}>
-                  <Text>Becode</Text>
-                  <Text style={{fontStyle:'italic',color:'gray'}}>Bruxelles</Text>
+                  <Text>{this.props.name}</Text>
+                  <Text style={{fontStyle:'italic',color:'gray'}}>{this.props.region}</Text>
                 </Body>
                 <Body style={{flex:1,flexDirection:'row',alignItems:'center',marginLeft:-100}}>
                   <Button small iconRight transparent>
-                    <Text style={{color: '#4FBC84',fontSize:12}}>5 missions disponibles</Text>
+                    <Text style={{color: '#4FBC84',fontSize:12}}>{this.props.nombre +' missions disponibles'}</Text>
                     <Icon name="arrow-dropright" style={{color: '#4FBC84'}} />
                   </Button>
                 </Body>
@@ -24,7 +24,7 @@ export default class ProjectItem extends Component {
             <CardItem>
               <Body style={{flex:1}}>
               <Text style={{marginBottom:15}}>Web Developpement</Text>
-              <Text note>{"Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you."}</Text>
+              <Text note>{this.props.description}</Text>
 
               </Body>
             </CardItem>
