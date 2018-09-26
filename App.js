@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
 import { Container, Header, Content, Button, Title, Text, Card, CardItem, Body, Drawer, Left, Icon, Right, Spinner } from 'native-base';
 import { Font } from 'expo';
+import { Router,Scene } from 'react-native-router-flux';
+
 import Sidebar from './components/Sidebar';
 import FormTest from './components/FormTest';
 import ProjectItem from './components/ProjectItem';
@@ -10,6 +12,8 @@ import ProfilMissions from './components/ProfilMissions';
 import ProfilUser from './components/ProfilUser';
 import ListProject from './components/ListProject';
 import ListMissions from './components/ListMissions';
+import LoginForm from './components/LoginForm';
+
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -91,6 +95,7 @@ export default class App extends React.Component {
   }
 
   render() {
+
     if(this.state.fontsLoaded) {
     return (
       <Drawer
@@ -113,8 +118,8 @@ export default class App extends React.Component {
               </Button>
             </Right>
           </Header>
-          <Content>
-          {/*<MissionItem />
+          {/*<Content>
+          <MissionItem />
           <ProjectItem />
           <ProjectItem />
           <ProjectItem />
@@ -122,10 +127,21 @@ export default class App extends React.Component {
           <ProjectItem />
           <ProjectItem />
           <ProfilMissions />
-          <ProfilUser />*/}
+          <ProfilUser />
           <ListProject />
           <ListMissions />
-          </Content>
+          <LoginForm />
+          </Content>*/}
+          <Router>
+            <Scene hideNavBar key="root">
+              <Scene hideNavBar key="Login" component={LoginForm} title="pageTest" initial={true} />
+              <Scene hideNavBar key="ListProject" component={ListProject} title="rePageTest" />
+              <Scene hideNavBar key="ListMissions" component={ListMissions} title="listing" />
+              <Scene hideNavBar key="detailMission" component={ProfilMissions} title="rePageTest" />
+              <Scene hideNavBar key="profil" component={ProfilUser} title="rePageTest" />
+            </Scene>
+          </Router>
+
         </Container>
       </Drawer>
     );

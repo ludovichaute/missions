@@ -9,6 +9,7 @@ export default class ListMissions extends Component {
   render() {
     const listingMissions = missions.map( (mission) => {
       return (
+
         <MissionItem
         key = {mission.id}
         region ={mission.region}
@@ -21,11 +22,12 @@ export default class ListMissions extends Component {
       )
     })
     return (
-          <View>
+          <Container>
+            <Content>
 
             {listingMissions}
-
-          </View>
+            </Content>
+          </Container>
 
     );
   }

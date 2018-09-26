@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
 import {Card, CardItem, Thumbnail, Text, Button, Icon,Right, Left, Body } from 'native-base';
+import { Actions } from 'react-native-router-flux';
+
 export default class ProjectItem extends Component {
   render() {
     return (
@@ -14,7 +16,7 @@ export default class ProjectItem extends Component {
                   <Text style={{fontStyle:'italic',color:'gray'}}>{this.props.region}</Text>
                 </Body>
                 <Body style={{flex:1,flexDirection:'row',alignItems:'center',marginLeft:-100}}>
-                  <Button small iconRight transparent>
+                  <Button onPress={Actions.ListMissions()} small iconRight transparent>
                     <Text style={{color: '#4FBC84',fontSize:12}}>{this.props.nombre +' missions disponibles'}</Text>
                     <Icon name="arrow-dropright" style={{color: '#4FBC84'}} />
                   </Button>

@@ -19,12 +19,12 @@ export default class ListProject extends Component {
       )
     })
     return (
-          <View>
-
+      <Container>
+        <Content>
             {listingProjects}
 
-          </View>
-
+          </Content>
+        </Container>
     );
   }
 }
