@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Test from './components/Test';
 import Retest from './components/Retest';
 import LoginForm from './components/LoginForm';
+import ListeMissions from './components/ListeMissions';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -16,14 +17,16 @@ export default class App extends React.Component {
 
   constructor() {
     super();
-    let firestore = base.firestore();
-    firestore.settings({
+    this.firestore = base.firestore();
+    this.firestore.settings({
       timestampsInSnapshots: true
     });
-    this.ref = firestore.collection('projects');
+    this.ref = this.firestore.collection('projects');
     this.unsubscribe = null;
     this.state = {
       projects: [],
+      missions: [],
+      skills: [],
       fontsLoaded: false,
       dataLoaded:false
     }
@@ -38,29 +41,27 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
+    // this.unsubscribe = this.firebase.collection('projects').onSnapshot(this.onCollectionUpdate, 'projects')
     // For one-time query use this line and comment the subscribe
-    // this.ref.get().then(snapshot => this.onCollectionUpdate(snapshot));
+    this.firestore.collection('projects').get().then(snapshot => this.onCollectionUpdate(snapshot, 'projects'));
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    // this.unsubscribe();
   }
 
-  onCollectionUpdate = (querySnapshot) => {
-    let projects = [];
+  onCollectionUpdate = (querySnapshot, collection) => {
+    let dataStore = [];
     querySnapshot.forEach((doc) => {
-      let data = doc.data();
-      projects.push({
+      dataStore.push({
         key: doc.id, // Document ID
-        name: data.name,
-        desc: data.description
+        data: doc.data()
       });
     });
     this.setState({
-      projects,
+      [collection]: dataStore,
       dataLoaded:true
-   });
+    });
   }
 
   closeDrawer = () => {
@@ -83,8 +84,8 @@ export default class App extends React.Component {
 
           <Router>
             <Scene hideNavBar key="root">
-              <Scene hideNavBar key="listeProjets" component={LoginForm} title="pageTest" initial={true} />
-              <Scene hideNavBar key="listeMissions" component={Retest} title="rePageTest" />
+              <Scene hideNavBar key="listeProjets" component={ListeMissions} title="pageTest" />
+              <Scene hideNavBar key="listeMissions" component={ListeMissions} title="rePageTest" initial={true} />
               <Scene hideNavBar key="detailMission" component={Retest} title="rePageTest" />
               <Scene hideNavBar key="profile" component={Retest} title="rePageTest" />
             </Scene>

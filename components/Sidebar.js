@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Text, Icon, Content, Button, Left, Body, Right, ListItem } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 export default class Sidemenu extends Component {
   render() {
@@ -46,12 +47,12 @@ export default class Sidemenu extends Component {
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button transparent>
+              <Button transparent onPress={Actions.listeMissions()}>
                 <Icon active={false} name="hammer" />
               </Button>
             </Left>
             <Body>
-              <Text>Marteau</Text>
+              <Text>Missions</Text>
             </Body>
             <Right>
             </Right>
