@@ -5,7 +5,7 @@ import { Font } from 'expo';
 import Sidebar from './components/Sidebar';
 import FormTest from './components/FormTest';
 import ProjectItem from './components/ProjectItem';
-import ItemProject from './components/ItemProject';
+import MissionItem from './components/MissionItem';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -111,7 +111,7 @@ export default class App extends React.Component {
           </Header>
           <Content>
           <ProjectItem />
-          <ItemProject />
+          <MissionItem />
           <ProjectItem />
           <ProjectItem />
           <ProjectItem />
