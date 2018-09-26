@@ -6,6 +6,8 @@ import Sidebar from './components/Sidebar';
 import FormTest from './components/FormTest';
 import ProjectItem from './components/ProjectItem';
 import MissionItem from './components/MissionItem';
+import ProfilMissions from './components/ProfilMissions';
+import ProfilUser from './components/ProfilUser';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -110,13 +112,15 @@ export default class App extends React.Component {
             </Right>
           </Header>
           <Content>
-          <ProjectItem />
           <MissionItem />
           <ProjectItem />
+          {/*<ProjectItem />
           <ProjectItem />
           <ProjectItem />
           <ProjectItem />
-          <ProjectItem />
+          <ProjectItem />*/}
+          <ProfilMissions />
+          <ProfilUser />
           </Content>
         </Container>
       </Drawer>

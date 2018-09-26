@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon,Right, Left, Body } from 'native-base';
+import {Card, CardItem, Thumbnail, Text, Button, Icon,Right, Left, Body } from 'native-base';
 export default class MissionItem extends Component {
   render() {
     return (
