@@ -14,7 +14,7 @@ export default class LoginForm extends Component {
   }
 
     checkUsername() {
-      if(this.state.username === 'romain') {
+      if(this.state.username === 'dydy') {
         this.setState({message:'OK !'});
         Actions.ListProject();
       }

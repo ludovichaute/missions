@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import {Card, CardItem, Text,H1,Icon,Button} from 'native-base';
+import { Image,View } from 'react-native';
+import {Container,Content,Card, CardItem, Text,H1,Icon,Button} from 'native-base';
 export default class ProfilMissions extends Component {
   render() {
     return (
-
+          <Container>
+          <Content>
           <Card style={{paddingTop:15,justifyContent:'center',alignSelf:'center'}}>
             <CardItem style={{flexDirection:'column'}}>
               <Image source={{uri: 'https://i.kym-cdn.com/entries/icons/facebook/000/022/073/Did_you_ever_hear.jpg'}} style={{width:200,height:250}} />
@@ -32,6 +33,8 @@ export default class ProfilMissions extends Component {
               </Button>
             </CardItem>
           </Card>
+          </Content>
+          </Container>
 
     );
   }

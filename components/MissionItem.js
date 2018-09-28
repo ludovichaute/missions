@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import {Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
 export default class MissionItem extends Component {
   render() {
@@ -35,7 +36,7 @@ export default class MissionItem extends Component {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent>
+                <Button transparent onPress={()=>{Actions.detailMission()}}>
                   <Icon name="add-circle" style={{color: '#4FBC84'}} />
                   <Text style={{color: '#4FBC84'}}>{"Plus de détails"}</Text>
                 </Button>

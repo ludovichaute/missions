@@ -6,8 +6,6 @@ import { Router,Scene } from 'react-native-router-flux';
 
 import Sidebar from './components/Sidebar';
 import FormTest from './components/FormTest';
-import ProjectItem from './components/ProjectItem';
-import MissionItem from './components/MissionItem';
 import ProfilMissions from './components/ProfilMissions';
 import ProfilUser from './components/ProfilUser';
 import ListProject from './components/ListProject';
@@ -118,20 +116,6 @@ export default class App extends React.Component {
               </Button>
             </Right>
           </Header>
-          {/*<Content>
-          <MissionItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProjectItem />
-          <ProfilMissions />
-          <ProfilUser />
-          <ListProject />
-          <ListMissions />
-          <LoginForm />
-          </Content>*/}
           <Router>
             <Scene hideNavBar key="root">
               <Scene hideNavBar key="Login" component={LoginForm} title="pageTest" initial={true} />

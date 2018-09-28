@@ -16,7 +16,7 @@ export default class ProjectItem extends Component {
                   <Text style={{fontStyle:'italic',color:'gray'}}>{this.props.region}</Text>
                 </Body>
                 <Body style={{flex:1,flexDirection:'row',alignItems:'center',marginLeft:-100}}>
-                  <Button onPress={Actions.ListMissions()} small iconRight transparent>
+                  <Button transparent onPress={()=>{Actions.ListMissions()}} small iconRight transparent>
                     <Text style={{color: '#4FBC84',fontSize:12}}>{this.props.nombre +' missions disponibles'}</Text>
                     <Icon name="arrow-dropright" style={{color: '#4FBC84'}} />
                   </Button>

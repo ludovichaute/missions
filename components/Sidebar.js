@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Text, Icon, Content, Button, Left, Body, Right, ListItem } from 'native-base';
-
+import {Actions} from 'react-native-router-flux';
 export default class Sidemenu extends Component {
   render() {
 
@@ -9,121 +9,36 @@ export default class Sidemenu extends Component {
         <Content>
           <ListItem icon>
             <Left>
-              <Button transparent>
-                <Icon active={false} name="home" />
-              </Button>
+                <Icon style={{color:'#848589'}} active={false} name="home" />
             </Left>
             <Body>
-              <Text>Accueil</Text>
-            </Body>
-            <Right>
-              <Text>blop</Text>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
               <Button transparent>
-                <Icon active={false} name="person" />
+                <Text style={{color: '#4FBC84'}}>Accueil</Text>
               </Button>
-            </Left>
-            <Body>
-              <Text>Profile</Text>
             </Body>
             <Right>
             </Right>
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button transparent>
-                <Icon active={false} name="settings" />
-              </Button>
+                <Icon style={{color:'#848589'}} active={false} name="person" />
             </Left>
             <Body>
-              <Text>Settings</Text>
+            <Button transparent onPress={()=>{Actions.profil()}}>
+              <Text style={{color: '#4FBC84'}}>Profile</Text>
+              </Button>
             </Body>
             <Right>
             </Right>
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
-              </Button>
+                <Icon style={{color:'#848589'}} active={false} name="checkbox" />
             </Left>
             <Body>
-              <Text>Marteau</Text>
-            </Body>
-            <Right>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
+              <Button transparent onPress={()=>{Actions.ListProject()}}>
+                <Text style={{color: '#4FBC84'}}>Liste des projets</Text>
               </Button>
-            </Left>
-            <Body>
-              <Text>Marteau</Text>
-            </Body>
-            <Right>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
-              </Button>
-            </Left>
-            <Body>
-              <Text>Marteau</Text>
-            </Body>
-            <Right>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
-              </Button>
-            </Left>
-            <Body>
-              <Text>Marteau</Text>
-            </Body>
-            <Right>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
-              </Button>
-            </Left>
-            <Body>
-              <Text>Marteau</Text>
-            </Body>
-            <Right>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
-              </Button>
-            </Left>
-            <Body>
-              <Text>Marteau</Text>
-            </Body>
-            <Right>
-            </Right>
-          </ListItem>
-          <ListItem icon>
-            <Left>
-              <Button transparent>
-                <Icon active={false} name="hammer" />
-              </Button>
-            </Left>
-            <Body>
-              <Text>Marteau</Text>
             </Body>
             <Right>
             </Right>
