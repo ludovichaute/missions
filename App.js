@@ -11,6 +11,7 @@ import LoginForm from './components/LoginForm';
 import ListeMissions from './components/ListeMissions';
 import ListMissions from './components/ListMissions';
 import ListProject from './components/ListProject';
+import ProfilMissions from './components/ProfilMissions';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -101,10 +102,10 @@ export default class App extends React.Component {
             <Header openDrawer={() => this.openDrawer()} />
 
             <Router>
-              <Scene hideNavBar key="root" projects={this.state.projects} missions={this.state.missions}>
+              <Scene hideNavBar key="root" projects={this.state.projects} missions={this.state.missions} userid={"9e80Z5akXoTDHbXl7efL"}>
                 <Scene hideNavBar key="listeProjets" component={ListProject} initial={true} />
                 <Scene hideNavBar key="listeMissions" component={ListMissions} title="rePageTest" />
-                <Scene hideNavBar key="detailMission" component={Retest} title="rePageTest" />
+                <Scene hideNavBar key="detailMission" component={ProfilMissions} title="rePageTest" />
                 <Scene hideNavBar key="profile" component={Retest} title="rePageTest" />
               </Scene>
             </Router>
