@@ -17,11 +17,19 @@ export default class ProfilMissions extends Component {
               <Text style={{color: 'grey'}}>{"Web Developpement"}</Text>
             </CardItem>
             <CardItem>
+              <Icon name="calendar" style={{color: '#4FBC84'}} />
+              <Text style={{color: 'grey'}}>{"12/11/2018"}</Text>
+            </CardItem>
+            <CardItem>
+              <Icon name="map" style={{color: '#4FBC84'}} />
+              <Text style={{color: 'grey'}}>{"Cantersteen 10, 1000 Bruxelles"}</Text>
+            </CardItem>
+            <CardItem>
               <Icon name="construct" style={{color: '#4FBC84'}} />
               <Text style={{color: 'grey'}}>{"IT, Account"}</Text>
             </CardItem>
             <CardItem>
-              <Icon name="calendar" style={{color: '#4FBC84'}} />
+              <Icon name="alarm" style={{color: '#4FBC84'}} />
               <Text style={{color: 'grey'}}>{"5 hours"}</Text>
             </CardItem>
             <CardItem>

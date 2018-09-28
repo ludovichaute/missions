@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, View, FlatList, ScrollView,Image } from 'react-native';
 import { Container, Header, Content, Button, Title, Text, Card, CardItem, Body, Drawer, Left, Icon, Right, Spinner } from 'native-base';
 import { Font } from 'expo';
 import { Router,Scene } from 'react-native-router-flux';
@@ -98,7 +98,7 @@ export default class App extends React.Component {
     return (
       <Drawer
         ref={(ref) => { this.drawer = ref; }}
-        content={<Sidebar />}
+        content={<Sidebar onClose={() => this.closeDrawer()} />}
         onClose={() => this.closeDrawer()} >
         <Container>
           <Header style={{paddingTop:30, paddingBottom:10, backgroundColor:'#4FBC84'}}>
@@ -108,7 +108,7 @@ export default class App extends React.Component {
               </Button>
             </Left>
             <Body>
-              <Title>Missions</Title>
+              <Title>Degroof Petercam</Title>
             </Body>
             <Right>
               <Button transparent onPress={() => this.openDrawer()}>
@@ -132,6 +132,7 @@ export default class App extends React.Component {
     }
     return (
         <View style={styles.container}>
+          <Image source={require('./assets/sigle.png')} style={{height:80,width:80,marginBottom:20}} />
           <Spinner color="#4FBC84" />
         </View>
     );

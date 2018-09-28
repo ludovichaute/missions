@@ -30,7 +30,7 @@ export default class MissionItem extends Component {
               </Left>
 
               <Left>
-                  <Icon name="calendar" style={{color: 'black'}} />
+                  <Icon name="alarm" style={{color: 'black'}} />
                   <Text style={{color: 'black'}}>{this.props.hours + " hours needed."}</Text>
               </Left>
             </CardItem>

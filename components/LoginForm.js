@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { Container, Header, Content, Form, Item, Label, Input, Text, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-
 export default class LoginForm extends Component {
 
   constructor(props) {
@@ -25,9 +24,10 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <Container>
-        <Content>
-          <Form>
+      <Container style={{justifyContent:"center",alignItems:'center',flex:1}}>
+        <Content style={{flex:1}}>
+        <Image source={require('../assets/logo.png')} style={{height:100,width:250,marginTop:25}} />
+          <Form style={{alignItems:'center',justifyContent:'center'}}>
             <Item floatingLabel>
               <Label>Username</Label>
               <Input onChangeText={(text) =>this.setState({username:text})} />
@@ -36,10 +36,13 @@ export default class LoginForm extends Component {
               <Label>Password</Label>
               <Input />
             </Item>
-            <Button onPress={() => this.checkUsername()}>
-              <Text>Sign in</Text>
+            <Button style={{backgroundColor: '#4FBC84',marginTop:35,width:250,justifyContent:'center'}} onPress={() => this.checkUsername()}>
+              <Text>Login</Text>
             </Button>
           </Form>
+          <Button transparent style={{alignSelf:'center',marginTop:15,justifyContent:'center'}}>
+            <Text style={{fontSize:8, color: '#4FBC84'}}>{"If you don't have a profil yet, sign up here ."}</Text>
+          </Button>
           <Text>{this.state.message}</Text>
         </Content>
       </Container>
