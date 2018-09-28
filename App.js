@@ -9,6 +9,8 @@ import Test from './components/Test';
 import Retest from './components/Retest';
 import LoginForm from './components/LoginForm';
 import ListeMissions from './components/ListeMissions';
+import ListMissions from './components/ListMissions';
+import ListProject from './components/ListProject';
 // import fetchData from './test1';
 // import Projects from './models/projects';
 import base from './firebase';
@@ -21,12 +23,11 @@ export default class App extends React.Component {
     this.firestore.settings({
       timestampsInSnapshots: true
     });
-    this.ref = this.firestore.collection('projects');
+    // this.ref = this.firestore.collection('projects');
     this.unsubscribe = null;
     this.state = {
       projects: [],
       missions: [],
-      skills: [],
       fontsLoaded: false,
       dataLoaded:false
     }
@@ -38,6 +39,7 @@ export default class App extends React.Component {
       'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
     });
     this.setState({fontsLoaded:true});
+    await this.fetchAll();
   }
 
   componentDidMount() {
@@ -64,6 +66,22 @@ export default class App extends React.Component {
     });
   }
 
+  async fetchAll() {
+    await this.firestore.collection('missions').get().then(snapshot => this.collectionUpdate(snapshot, 'missions', false));
+    await this.firestore.collection('projects').get().then(snapshot => this.collectionUpdate(snapshot, 'projects', true));
+  }
+
+  collectionUpdate = (querySnapshot, collection, loaded) => {
+    let dataStore = {};
+    querySnapshot.forEach((doc) => {
+      dataStore[doc.id] = doc.data();
+    });
+    this.setState({
+      [collection]: dataStore,
+      dataLoaded:loaded
+    });
+  }
+
   closeDrawer = () => {
     this.drawer._root.close()
   };
@@ -74,30 +92,30 @@ export default class App extends React.Component {
 
   render() {
     if(this.state.fontsLoaded && this.state.dataLoaded) {
-    return (
-      <Drawer
-        ref={(ref) => { this.drawer = ref; }}
-        content={<Sidebar />}
-        onClose={() => this.closeDrawer()} >
-        <Container>
-          <Header openDrawer={() => this.openDrawer()} />
+      return (
+        <Drawer
+          ref={(ref) => { this.drawer = ref; }}
+          content={<Sidebar />}
+          onClose={() => this.closeDrawer()} >
+          <Container>
+            <Header openDrawer={() => this.openDrawer()} />
 
-          <Router>
-            <Scene hideNavBar key="root">
-              <Scene hideNavBar key="listeProjets" component={ListeMissions} title="pageTest" />
-              <Scene hideNavBar key="listeMissions" component={ListeMissions} title="rePageTest" initial={true} />
-              <Scene hideNavBar key="detailMission" component={Retest} title="rePageTest" />
-              <Scene hideNavBar key="profile" component={Retest} title="rePageTest" />
-            </Scene>
-          </Router>
-        </Container>
-      </Drawer>
-    );
+            <Router>
+              <Scene hideNavBar key="root" projects={this.state.projects} missions={this.state.missions}>
+                <Scene hideNavBar key="listeProjets" component={ListProject} initial={true} />
+                <Scene hideNavBar key="listeMissions" component={ListMissions} title="rePageTest" />
+                <Scene hideNavBar key="detailMission" component={Retest} title="rePageTest" />
+                <Scene hideNavBar key="profile" component={Retest} title="rePageTest" />
+              </Scene>
+            </Router>
+          </Container>
+        </Drawer>
+      );
     }
     return (
-        <View style={styles.container}>
-          <Spinner color="black" />
-        </View>
+      <View style={styles.container}>
+        <Spinner color="black" />
+      </View>
     );
   }
 }

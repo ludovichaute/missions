@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 export default class MyHeader extends React.Component {
 
@@ -7,7 +8,7 @@ export default class MyHeader extends React.Component {
       return(
         <Header style={{paddingTop:30, paddingBottom:10}}>
           <Left>
-            <Button transparent>
+            <Button transparent onPress={() => Actions.pop()}>
               <Icon name='arrow-back' />
             </Button>
           </Left>

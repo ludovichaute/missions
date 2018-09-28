@@ -1,11 +1,12 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Header, Text, Left, Body, Right, Button, Icon, Title } from 'native-base';
-import { Actions } from 'react-native-router-flux';
+import React, { Component } from 'react';
+import { Image,View, Text } from 'react-native';
+import {Container,Content } from 'native-base';
+import { missions }  from './dataApp';
+import MissionItem from './MissionItem';
 import base from '../firebase';
 
 
-export default class ListeMissions extends React.Component {
+export default class ListMissions extends Component {
 
   constructor(props) {
     super(props);
@@ -44,26 +45,33 @@ export default class ListeMissions extends React.Component {
 
   render() {
 
-    const missions = Object.keys(this.state.missions).map(item => {
+    const listingMissions = Object.keys(this.state.missions).map(item => {
       if(this.state.dataLoaded) {
         return(
-          <View key="{item}">
-            <Text>{this.state.missions[item].name}</Text>
-            <Text>{this.state.missions[item].project}</Text>
-            <Text>{this.state.projects[this.state.missions[item].project].name}</Text>
-          </View>
+          <MissionItem
+            key = {item}
+            region ={this.state.missions[item].region}
+            name={this.state.missions[item].name}
+            description={this.state.missions[item].description}
+            skills={this.state.missions[item].skills}
+            hours={this.state.missions[item].hours}
+          />
         );
       }
     });
 
-      return(
-        <View>
-          <Text>Test</Text>
-          <Button onPress={() => Actions.retest()}>
-          <Text>Retest</Text>
-          </Button>
-          {this.state.dataLoaded ? missions : null}
-        </View>
+    if(this.state.dataLoaded) {
+      return (
+        <Container>
+          <Content>
+            {listingMissions}
+          </Content>
+        </Container>
       );
+    } else {
+      return null;
+    }
+
+
   }
 }
